@@ -1,0 +1,7 @@
+{
+  "deviceName": "devicename",
+  "appPackage": "appPackage",
+  "appActivity": "appActivity",
+  "platformName": "Android",
+  "platformVersion": "version"
+}
