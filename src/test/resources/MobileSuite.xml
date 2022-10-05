@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="IMDB Suite">
+    <test name="IMDB Search">
+        <parameter name="movieName" value="Fight Club"/>
+        <parameter name="movieOverview" value="An insomniac office worker and a devil-may-care soap maker form an underground fight club that evolves into much more."/>
+        <classes>
+            <class name="tests.SearchTests"/>
+        </classes>
+    </test>
+</suite>
