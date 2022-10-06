@@ -12,12 +12,12 @@ public class BaseMobileTest {
 
     protected AndroidDriver<AndroidElement> driver;
 
-    @BeforeSuite(alwaysRun = true)
+    @BeforeTest(alwaysRun = true)
     public void setUp(){
         driver = new MobileAppDriver().getMoviesAppDriver(new ConfigCapabilities().getCapabilities());
     }
 
-    @AfterSuite(alwaysRun = true)
+    @AfterTest(alwaysRun = true)
     public void tearDown()
     {
         driver.quit();

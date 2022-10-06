@@ -5,11 +5,11 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import org.openqa.selenium.By;
 
-public class GlobalNavigationScreen extends BaseMobileScreen {
+public class HomeScreen extends BaseMobileScreen {
 
     private final By navigateToSearchButton = By.id("com.imdb.mobile:id/navigation_search_browse");
 
-    public GlobalNavigationScreen(AndroidDriver<AndroidElement> driver)
+    public HomeScreen(AndroidDriver<AndroidElement> driver)
     {
         super(driver);
     }
@@ -19,5 +19,4 @@ public class GlobalNavigationScreen extends BaseMobileScreen {
         driver.findElement(navigateToSearchButton).click();
         return new SearchScreen(driver);
     }
-
 }

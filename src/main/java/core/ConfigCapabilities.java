@@ -1,11 +1,13 @@
 package core;
 
+import adapter.bases.BaseMobileTest;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.pmw.tinylog.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.FileReader;
 
@@ -17,6 +19,8 @@ public class ConfigCapabilities {
     private static final String JSON_FILE_PATH = "src/main/resources/Capabilities.json";
     private static final JsonParser parser = new JsonParser();
     private static final DesiredCapabilities capabilities = new DesiredCapabilities();
+
+    private static Logger log = LoggerFactory.getLogger(ConfigCapabilities.class);
 
     private static void applicationSetUp(){
         capabilities.setCapability(APP_PACKAGE, getJsonDataProperty(APP_PACKAGE));
@@ -32,7 +36,8 @@ public class ConfigCapabilities {
             JsonObject jsonObject = (JsonObject) obj;
             return jsonObject.get(property).getAsString();
         } catch (Exception e) {
-            Logger.error(e.getMessage(), e);
+            //TODO
+            log.error(e.getMessage());
         }
         return "";
     }

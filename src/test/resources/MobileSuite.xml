@@ -8,4 +8,10 @@
             <class name="tests.SearchTests"/>
         </classes>
     </test>
+    <test name="IMDB WatchList">
+        <parameter name="movieName" value="Fight Club"/>
+        <classes>
+            <class name="tests.WatchListTests"/>
+        </classes>
+    </test>
 </suite>

@@ -5,6 +5,8 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,7 +26,10 @@ public class SearchScreen extends BaseMobileScreen {
 
     public MovieScreen searchMovie(String movieName)
     {
-        AndroidElement searchBarAE = driver.findElement(searchBar);
+        long timeOutInSeconds = 15;
+        WebDriverWait webDriverWait = new WebDriverWait(driver, timeOutInSeconds);
+        AndroidElement searchBarAE = (AndroidElement) webDriverWait.
+                until(ExpectedConditions.elementToBeClickable(searchBar));
         searchBarAE.click();
         searchBarAE.sendKeys(movieName);
         List<MobileElement> suggestedMovies = getSearchSuggestionMovies();
@@ -34,8 +39,6 @@ public class SearchScreen extends BaseMobileScreen {
         for(MobileElement movieME : suggestedMovies)
         {
             currentMovie = (AndroidElement) movieME;
-            //TODO Ask for UISelector
-            //currentMovieName = currentMovie.findElementByAndroidUIAutomator("new UiSelector().resourceId(\"com.imdb.mobile:id/suggestion\"").getText();
             currentMovieName = currentMovie.findElement(By.id("com.imdb.mobile:id/suggestion")).getText();
             if(movieName.equalsIgnoreCase(currentMovieName))
             {
@@ -56,10 +59,12 @@ public class SearchScreen extends BaseMobileScreen {
 
     public List<MobileElement> getSearchSuggestionMovies()
     {
+        long timeOutInSeconds = 15;
         List<MobileElement> suggestedMovies;
-        AndroidElement searchSuggestionAE = driver.findElement(searchSuggestions);
+        WebDriverWait explicitWait = new WebDriverWait(driver, timeOutInSeconds);
+        AndroidElement searchSuggestionAE = (AndroidElement) explicitWait.
+                until(ExpectedConditions.presenceOfElementLocated(searchSuggestions));
         suggestedMovies = searchSuggestionAE.findElementsByClassName("android.widget.LinearLayout");
         return suggestedMovies;
     }
-
 }

@@ -11,9 +11,9 @@ public class MobileAppDriver {
     private AndroidDriver<AndroidElement> driver;
 
     public AndroidDriver<AndroidElement> getMoviesAppDriver(DesiredCapabilities capabilities)  {
+        if(driver == null || driver.getSessionId() == null)
             try {
                 driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
