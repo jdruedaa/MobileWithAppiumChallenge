@@ -18,6 +18,8 @@ public class MovieScreen extends BaseMobileScreen {
 
     private final By navigateToYouSectionButton = By.id("com.imdb.mobile:id/navigation_you");
 
+    private final By scroll = By.id("com.imdb.mobile:id/main_content_scroller");
+
     public MovieScreen(AndroidDriver<AndroidElement> driver)
     {
         super(driver);
@@ -36,7 +38,7 @@ public class MovieScreen extends BaseMobileScreen {
         WebDriverWait explicitWait = new WebDriverWait(driver, timeOutInSeconds);
         explicitWait.until(ExpectedConditions.visibilityOf(driver.findElementByAndroidUIAutomator(
                 "new UiScrollable(new UiSelector().scrollable(true).instance(0))" +
-                ".scrollIntoView(new UiSelector().textContains(\"Cast\").instance(0))")));
+                ".scrollIntoView(new UiSelector().resourceId(\"com.imdb.mobile:id/watchlist_button_view\"))")));
         explicitWait.until(ExpectedConditions.elementToBeClickable(addToWatchListButton)).click();
     }
 

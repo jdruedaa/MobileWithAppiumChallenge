@@ -62,6 +62,7 @@ public class SearchScreen extends BaseMobileScreen {
         long timeOutInSeconds = 15;
         List<MobileElement> suggestedMovies;
         WebDriverWait explicitWait = new WebDriverWait(driver, timeOutInSeconds);
+        //TODO attribute to be not empty, child? Or change selector to target only movies
         AndroidElement searchSuggestionAE = (AndroidElement) explicitWait.
                 until(ExpectedConditions.presenceOfElementLocated(searchSuggestions));
         suggestedMovies = searchSuggestionAE.findElementsByClassName("android.widget.LinearLayout");
